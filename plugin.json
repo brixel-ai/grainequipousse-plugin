@@ -1,0 +1,108 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "graine-qui-pousse",
+  "version": "1.1.0",
+  "description": "Create on-brand images, carousels and videos from your graine qui pousse brand dossier and library, then schedule or publish them on your social networks.",
+  "author": {
+    "name": "BRIXEL",
+    "email": "justin@brixel.ai",
+    "url": "https://grainequipousse.com"
+  },
+  "homepage": "https://grainequipousse.com/mcp-connector",
+  "keywords": ["social media", "content creation", "video", "carousel", "scheduling", "branding"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "graine qui pousse",
+        "shortDescription": "Design & schedule brand posts",
+        "longDescription": "graine qui pousse is a social media studio for freelancers, small business owners, tradespeople and shop owners who run their own social media. Connect your graine qui pousse account and ChatGPT works inside your brand's dossier: its tone of voice, personas, brand kit (logo, palette, fonts) and media library.\n\nWhat you can do:\n- Create posts for LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads and X: text posts, single images, carousels, videos and reels.\n- Direct and design them: ChatGPT writes the storyboard or the slide outline, then designs each image or video as a composition in your brand's colors and fonts. graine qui pousse checks it, shows preview frames and renders the final file.\n- Use your own media: search the photos, footage, music and sound effects of your library, or drop new files through an upload link.\n- Edit a video from your own footage: one long video (an interview, a talk) or up to 20 raw clips, keeping their sound and words where the film needs them. Montage effects (a cutout, 2.5D, tracking, slow motion, a morph) are used only when you allow them on the post.\n- Prepare a shoot: ChatGPT writes the text and the shots, you film them on your phone on a page of your own, then ChatGPT edits your takes. The same page records just your voice-over, at the teleprompter.\n- Finish a video's sound: your voice-over (recorded at the teleprompter or sent as a file), other voices, library music with its levels, sound effects and subtitles.\n- Write the caption and hashtags in your brand's tone of voice.\n- Schedule or publish on your brand's connected accounts, or cancel a scheduled post, only when you ask and only with the publishing permission.\n- Read and update your brand dossier (identity, tone of voice, personas, brand kit) with the separate dossier permission.\n\nIn the conversation, interactive views show the post preview, the video's cover with a frame picker, the publishing planner, the brand dossier and an area to drop your files.\n\nRequirements and limits: you need a graine qui pousse account with at least one brand, and the social accounts you publish to must be connected in the app. When you connect, you choose which brands ChatGPT may use and whether it may publish or edit them; you can remove this access at any time in the app. Images and videos are designed from your brand kit and library and rendered by graine qui pousse: this plugin does not generate photos, video footage or voices with generative AI; the montage effects you allow redraw frames of your own videos and photos. Every post made this way also appears in the graine qui pousse app, where you can keep editing it.",
+        "developerName": "BRIXEL",
+        "category": "Design",
+        "capabilities": [
+          "Create image, carousel and video posts in the brand's style",
+          "Search the brand's media library",
+          "Edit videos from the brand's own footage, keeping what is said",
+          "Prepare a shoot or a voice-over the user records on their phone",
+          "Schedule and publish to connected social accounts",
+          "Read and update the brand dossier"
+        ],
+        "websiteURL": "https://grainequipousse.com",
+        "supportURL": "https://grainequipousse.com/mcp-connector#help",
+        "privacyPolicyURL": "https://grainequipousse.com/privacy",
+        "termsOfServiceURL": "https://grainequipousse.com/terms",
+        "defaultPrompt": [
+          "Make a 20-second LinkedIn video about our new offer, with music from my library.",
+          "Turn the photos in my library into a 4-slide Instagram carousel.",
+          "Schedule my latest post on LinkedIn for Thursday at 9 a.m."
+        ],
+        "brandColor": "#3255A4",
+        "brandColorDark": "#00A95C",
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon-dark.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Read the brand's context. Expected to work for any connected account with a brand.",
+              "prompt": "What do you know about my brand on graine qui pousse? Summarize its tone of voice, its personas and its brand colors.",
+              "tools_triggered": "get_brand_context",
+              "expected_behavior": "Returns the test brand's company description, tone of voice, personas and brand kit palette from its dossier, and summarizes them. Nothing is created or changed."
+            },
+            {
+              "description": "Create a single image post from the brand kit, as a private draft.",
+              "prompt": "Create a square Instagram image post announcing our sourdough workshop this Saturday, in the brand's colors and fonts.",
+              "tools_triggered": "get_brand_context, create_post, read_skill, check_still, add_still, set_caption, get_post",
+              "expected_behavior": "create_post first asks the brief questions the prompt left open (prefilled with suggestions; the reviewer can keep them), then creates a private draft image post. The image is designed in the brand's palette and fonts, checked, then stored and rendered; a caption is written. get_post shows the post preview with the image and its caption. Nothing is published."
+            },
+            {
+              "description": "Search the brand's media library and build a carousel from its photos.",
+              "prompt": "Find photos of our bread in my library and turn them into a 4-slide LinkedIn carousel about our sourdough.",
+              "tools_triggered": "search_assets, create_post, read_skill, write_storyboard, check_still, add_still, set_caption, get_post",
+              "expected_behavior": "Searches the brand's library and shows the matching photos, creates a draft carousel, writes a 4-slide outline, then designs, checks and stores each slide using those photos. A caption is written and the carousel preview is shown. Nothing is published."
+            },
+            {
+              "description": "Make a short video with library music and render it.",
+              "prompt": "Make a 15-second vertical video for Instagram Reels presenting our sourdough loaf, with upbeat music from the library.",
+              "tools_triggered": "create_post, read_skill, write_storyboard, write_film, preview_film, search_music, set_music, render_video, wait, get_post",
+              "expected_behavior": "Creates a draft reel, writes its storyboard and its composition in the brand's colors, shows preview frames, picks and sets a music track from the library, renders the MP4 (render_video, then wait while it is still running) and shows the playable video in the post preview. Nothing is published."
+            },
+            {
+              "description": "Schedule a finished post on a connected account (run after one of the cases above; needs the publishing permission granted at connection).",
+              "prompt": "Schedule this post on our LinkedIn page for next Thursday at 9 a.m.",
+              "tools_triggered": "list_destinations, plan_post, publish_post",
+              "expected_behavior": "Checks that a LinkedIn page is connected, shows the publishing planner, then schedules the post for Thursday at 9:00 in the brand's timezone. The post shows as scheduled in the app; cancel_schedule removes it."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Off-topic request: nothing to do with the brand's social media. The plugin should not be called.",
+              "prompt": "What's the weather in Lyon tomorrow?"
+            },
+            {
+              "description": "AI-generated photo: the plugin does not generate photos with generative AI. It should not produce one; it can offer to design the image from the brand kit and the library, or from a photo the user sends.",
+              "prompt": "Generate a photorealistic AI photo of a croissant for our next post."
+            },
+            {
+              "description": "Generated voice: the plugin does not generate voices with AI. It should not produce a synthetic voice-over; it can offer the user to record it at the teleprompter on their phone, or to send a recording.",
+              "prompt": "Generate an AI voice-over that reads this script for my video."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "New: the montage of the brand's own videos (their sound and words kept), shoots the user films on their phone from the text and shots written in the conversation, voice-overs recorded at the teleprompter, and montage effects used only when the user allows them on the post.",
+        "translations": {
+          "fr-FR": {
+            "subtitle": "Posts et vidéos à votre image",
+            "description": "graine qui pousse est un studio de réseaux sociaux pour les indépendants, les dirigeants de petites entreprises, les artisans et les commerçants qui gèrent eux-mêmes leurs réseaux. Connectez votre compte graine qui pousse et ChatGPT travaille dans le dossier de votre marque : son ton, ses personas, son kit de marque (logo, palette, polices) et sa librairie de médias.\n\nCe que vous pouvez faire :\n- Créer des posts pour LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads et X : textes, images, carrousels, vidéos et reels.\n- Les réaliser : ChatGPT écrit le storyboard ou le déroulé des slides, puis conçoit chaque image ou vidéo aux couleurs et aux polices de votre marque. graine qui pousse la vérifie, en montre des aperçus et rend le fichier final.\n- Utiliser vos médias : chercher dans les photos, vidéos, musiques et bruitages de votre librairie, ou déposer de nouveaux fichiers par un lien d'envoi.\n- Monter une vidéo à partir des vôtres : une vidéo longue (un entretien, une conférence) ou jusqu'à 20 rushs, en gardant leur son et leurs paroles là où le film en a besoin. Les effets de montage (détourage, 2,5D, suivi, ralenti, morph) ne sont employés que si vous les autorisez sur le post.\n- Préparer un tournage : ChatGPT écrit le texte et les plans, vous les filmez depuis votre téléphone sur une page à vous, puis ChatGPT monte vos prises. La même page sert à enregistrer seulement votre voix off, au prompteur.\n- Finir le son d'une vidéo : votre voix off (enregistrée au prompteur ou envoyée en fichier), d'autres voix, une musique de la librairie et ses niveaux, des bruitages et des sous-titres.\n- Écrire la légende et les hashtags dans le ton de votre marque.\n- Programmer ou publier sur les comptes connectés de votre marque, ou annuler une programmation, seulement à votre demande et avec la permission de publier.\n- Lire et modifier le dossier de votre marque (identité, ton, personas, kit de marque) avec la permission dédiée.\n\nDans la conversation, des vues interactives montrent l'aperçu du post, la couverture de la vidéo et le choix d'une autre image, le planificateur de publication, le dossier de marque et une zone pour déposer vos fichiers.\n\nPrérequis et limites : il faut un compte graine qui pousse avec au moins une marque, et les comptes sociaux où publier doivent être connectés dans l'app. À la connexion, vous choisissez les marques que ChatGPT peut utiliser et s'il peut publier ou les modifier ; vous retirez cet accès quand vous voulez depuis l'app. Images et vidéos sont conçues à partir de votre kit de marque et de votre librairie, puis rendues par graine qui pousse : ce plugin ne génère ni photo, ni séquence vidéo, ni voix par IA générative ; les effets de montage que vous autorisez redessinent des images de vos propres vidéos et photos. Chaque post créé ainsi apparaît aussi dans l'app graine qui pousse, où vous pouvez continuer à le modifier."
+          }
+        }
+      }
+    }
+  }
+}

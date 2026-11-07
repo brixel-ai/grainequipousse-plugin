@@ -1,0 +1,17 @@
+{
+  "name": "graine-qui-pousse",
+  "owner": {
+    "name": "BRIXEL",
+    "email": "justin@brixel.ai"
+  },
+  "metadata": {
+    "description": "The graine qui pousse plugin: the social-media studio's connector (MCP) and its skills."
+  },
+  "plugins": [
+    {
+      "name": "graine-qui-pousse",
+      "source": "./",
+      "description": "Make on-brand images, carousels and videos with graine qui pousse, then schedule or publish them."
+    }
+  ]
+}
