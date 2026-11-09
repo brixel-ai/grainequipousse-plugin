@@ -1,6 +1,6 @@
 ---
 name: directing-a-video
-description: Directs a graine qui pousse video before it is designed — its argument, its idea, its look, its shots timed in film seconds, the words on screen and the music bed — as a Markdown storyboard that the server checks (the clock, the words a viewer can read per shot, the library ids, the `Music:` line) and then holds the Film.tsx to. Use it for a video or a reel after its brief (and its voice-over, when it has one), before any Film.tsx, and to patch a refused storyboard; a montage's paper edit is written in its format.
+description: Directs a graine qui pousse video before it is designed — its argument, its idea, its look, its shots timed in film seconds, the words on screen, the music bed, and what each shot plays — a passage of a video cut with its sound (`src A …` for the user's files, `src asset:<id> …` for the library's) or a picture the film draws (`asset:<id>`) — as a Markdown storyboard the server checks (the clock, the words a viewer can read, the ids, each passage against what its video says) and then holds the Film.tsx to. Use it for every video or reel, a shoot's montage too, after its brief, its own videos read and its voice-over, before any Film.tsx, and to patch a refused storyboard.
 ---
 
 # Directing a video — the storyboard

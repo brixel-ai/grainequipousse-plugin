@@ -1,6 +1,6 @@
 ---
 name: designing-a-film
-description: Writes, checks, previews, renders and verifies a graine qui pousse video as ONE Remotion composition (Film.tsx) — the tool loop, the calls that get refused, the file contract, the film kit, cuts, layout in px, the measured check. Use it once a video's storyboard (or a montage's cut) is written, to make its Film.tsx; read it with the post's id. For images and slides, designing-a-still.
+description: Writes, checks, previews, renders and verifies a graine qui pousse video as ONE Remotion composition (Film.tsx) — the tool loop, the calls that get refused, the file contract, the film kit, cuts, layout in px, the measured check. Use it once a video's storyboard is written (and its passages cut, when it plays some), to make its Film.tsx; read it with the post's id. For images and slides, designing-a-still.
 ---
 
 # Designing a film — Film.tsx

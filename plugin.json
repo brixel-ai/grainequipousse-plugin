@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "graine-qui-pousse",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Create on-brand images, carousels and videos from your graine qui pousse brand dossier and library, then schedule or publish them on your social networks.",
   "author": {
     "name": "BRIXEL",

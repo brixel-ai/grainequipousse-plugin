@@ -1,6 +1,6 @@
 ---
 name: making-a-post
-description: Maps the making of a social-media post with graine qui pousse — the brief rules, the steps in order for each kind of post (image, carousel, video, montage, shoot, story, series episode, text, planning slot) with each step's skill and tool, and the habits that keep calls from being refused. Use it first, whenever the user asks for a post, a video, a reel, a carousel, a story or an image for their brand.
+description: Maps the making of a social-media post with graine qui pousse — the brief rules, the steps in order for each kind of post (image, carousel, video — a montage of the brand's library, of the user's files or of pure design —, shoot, story, series episode, text, planning slot) with each step's skill and tool, and the habits that keep calls from being refused. Use it first, whenever the user asks for a post, a video, a reel, a carousel, a story or an image for their brand.
 ---
 
 # Making a post with graine qui pousse
