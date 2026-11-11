@@ -1,5 +1,5 @@
 ---
-description: Make a social-media post for your brand with graine qui pousse — an image, a carousel, a video or a reel.
+description: Make a social-media post for your brand with graine qui pousse: an image, a carousel, a video or a reel.
 argument-hint: what the post is about (and where it goes, if you know)
 ---
 

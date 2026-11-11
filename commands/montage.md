@@ -1,5 +1,5 @@
 ---
-description: Edit a film from your brand's own videos — a talk, a podcast, a few rushes — with graine qui pousse, keeping their sound and words.
+description: Edit a film from your brand's own videos (a talk, a podcast, a few rushes) with graine qui pousse, keeping their sound and words.
 argument-hint: what the film should say, and which videos to use
 ---
 
